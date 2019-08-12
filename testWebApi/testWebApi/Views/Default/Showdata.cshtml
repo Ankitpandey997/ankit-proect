@@ -1,0 +1,154 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.3.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<h2>Welcome To Web API</h2>
+<input type="button" id="GetallData" value="Get All Data" />
+<input type="button" id="GetData" value="Get Data" /> <br />
+
+<table id="tblPopulation" style="display:none;">
+    <thead>
+        <tr>
+            <td>EmployeeId</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>Email</td>   
+            <td>Salary</td>
+            <td>Company</td>
+            <td>Dept</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+        </tr>
+    </thead>
+
+</table>
+
+
+<script>
+
+        $(document).ready(function () {
+
+            $("#GetallData").click(function () {
+                debugger;
+                $("#tblPopulation").show();
+                $.ajax({
+
+                    url: 'http://localhost:13958/api/Home',
+                    dataType: "json",
+                    type: "Get",
+                    //contentType: 'application/json; charset=utf-8',
+                    //data: {Id:Id},
+                    success: function (data) {
+                        var tr;
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                            tr = tr + "<tr>";
+                            tr = tr + "<td>" + data[i].EmployeeId + "</td>";
+                            tr = tr + "<td>" + data[i].FirstName + "</td>";
+                            tr = tr + "<td>" + data[i].LastName + "</td>";
+                            tr = tr + "<td>" + data[i].Email + "</td>";
+                            tr = tr + "<td>" + data[i].Salary + "</td>";
+                            tr = tr + "<td>" + data[i].Company + "</td>";
+                            tr = tr + "<td>" + data[i].Dept + "</td>";
+                            tr = tr + "</tr>";
+                        }
+                        $('#tblPopulation').append(tr);
+                        //tblFormate();
+                    },
+                    error: function (xhr) {
+                        alert('No Valid Data');
+                    }
+                });
+            });
+        }
+        );
+        </script>
+
+
+
+<script>
+
+    $("#GetData").click(function () {
+        debugger;
+        var Id = prompt("Enter EmployeeId");
+        $("#tblPopulation").show();
+        $.ajax({
+
+            url: 'http://localhost:13958/api/Home',
+            dataType: "json",
+            type: "Get",
+            //contentType: 'application/json; charset=utf-8',
+            data: { Id: Id },
+            success: function (data) {
+                var tr;
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    tr = tr + "<tr>";
+                    tr = tr + "<td>" + data[i].EmployeeId + "</td>";
+                    tr = tr + "<td>" + data[i].FirstName + "</td>";
+                    tr = tr + "<td>" + data[i].LastName + "</td>";
+                    tr = tr + "<td>" + data[i].Email + "</td>";
+                    tr = tr + "<td>" + data[i].Salary + "</td>";
+                    tr = tr + "<td>" + data[i].Company + "</td>";
+                    tr = tr + "<td>" + data[i].Dept + "</td>";
+                    tr = tr + "</tr>";
+                }
+                $('#tblPopulation').append(tr);
+                //tblFormate();
+            },
+            error: function (xhr) {
+                alert('No Valid Data');
+            }
+        });
+    });
+    //function tblFormate() {  
+  
+    //    var table = $('#tblPopulation').DataTable(  
+    //     {  
+    //         //"selengthMenuarching": false,  
+    //         "": [[5, 10, 50, 100, 150, -1], [5, 10, 50, 100, 150, "All"]]  
+    //     });  
+    //    //Apply the search  
+    //    table.columns().eq(0).each(function (colIdx) {  
+    //        $('input', table.column(colIdx).header()).on('keyup change', function () {  
+    //            table  
+    //                .column(colIdx)  
+    //                .search(this.value)  
+    //                .draw();  
+    //        });  
+    //    });  
+    //}  
+  
+              
+    //});  
+    </script>   
+
+
+
+
+

@@ -1,0 +1,5 @@
+E:\project 2018\testWebApi\BAL\bin\Debug\BAL.dll
+E:\project 2018\testWebApi\BAL\bin\Debug\BAL.pdb
+E:\project 2018\testWebApi\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+E:\project 2018\testWebApi\BAL\obj\Debug\BAL.dll
+E:\project 2018\testWebApi\BAL\obj\Debug\BAL.pdb
